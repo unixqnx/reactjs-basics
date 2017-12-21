@@ -5,13 +5,20 @@ export class Home extends React.Component{
 
     constructor(props){
         super(props);
-        this.age = props.age;
+        this.state = {
+            age: props.initialAge,
+            status: 10
+        };
 
         this.onMakeOlder = this.onMakeOlder.bind(this);
     }
 
     onMakeOlder(){
-        this.age++;
+        this.setState(
+            {
+                age: ++this.state.age
+            }
+        );
         console.log(this.age);
     }
 
@@ -19,10 +26,11 @@ export class Home extends React.Component{
         return(
             <div>
                 <p>In a new Component!</p>
-                <p>Your name is {this.props.name}, and your age is {this.age} years.</p>
+                <p>Your name is {this.props.name}, and your age is {this.state.age} years.</p>
+                <p>Status: {this.state.status}</p>
                 <hr/>
                 <button className="btn btn-primary" onClick={this.onMakeOlder}>Make me older!</button>
-                <button className="btn btn-primary" onClick={()=>this.onMakeOlder()}>Make me older!</button>
+                {/* <button className="btn btn-primary" onClick={()=>this.onMakeOlder()}>Make me older!</button> */}
             </div>
         );
     }
@@ -30,5 +38,5 @@ export class Home extends React.Component{
 
 Home.propTypes = {
     name: PropTypes.string,
-    age: PropTypes.number,
+    initialAge: PropTypes.number,
 };
