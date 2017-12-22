@@ -10,6 +10,13 @@ export class Home extends React.Component{
             status: 10
         };
 
+        setTimeout(
+            ()=>this.setState({status:20})
+            ,3000);
+
+
+
+
         this.onMakeOlder = this.onMakeOlder.bind(this);
     }
 
