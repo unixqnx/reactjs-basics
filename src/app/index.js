@@ -22,7 +22,17 @@ class App extends React.Component{
     onChangeLinkName(newName){
         this.setState(
             {
-                homeLink: newName
+                homeLink: newName,
+                homeMounted: true
+            }
+        );
+
+    }
+
+    onChangeHomeMounted(){
+        this.setState(
+            {
+                homeMounted: !this.state.homeMounted
             }
         );
 
