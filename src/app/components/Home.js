@@ -7,12 +7,12 @@ export class Home extends React.Component{
         super(props);
         this.state = {
             age: props.initialAge,
-            status: 10,
+            status: 0,
             homeLink: props.initialLinkName
         };
 //------------------------------------------------
         setTimeout(
-            ()=>this.setState({status:20})
+            ()=>this.setState({status:1})
             ,3000);
 //------------------------------------------------
             this.onMakeOlder = this.onMakeOlder.bind(this);
@@ -31,22 +31,23 @@ export class Home extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
-        //let s = "111";
-        console.log(`componentWillReciveProps ${nextProps}`);
-        // console.log("componentWillReciveProps");
+        console.log("componentWillReciveProps", nextProps);
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        console.log(`shouldComponentUpdate ${nextProps}  ${nextState}`);
+        console.log("shouldComponentUpdate", nextProps, nextState);
+        // if(nextState.status === 1){
+        //     return false;
+        // }
         return true;
     }
 
     componentWillUpdate(nextProps, nextState){
-        console.log(`componentWillUpdate ${nextProps}  ${nextState}`);
+        console.log("componentWillUpdate", nextProps,  nextState);
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log(`componentDidUpdate ${prevProps}  ${prevState}`);
+        console.log("componentDidUpdate", prevProps, prevState);
     }
 
     componentWillUnmount(){

@@ -9,10 +9,12 @@ class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            homeLink: "Home"
+            homeLink: "Home",
+            homeMounted: true
         };
 
         this.onChangeLinkName = this.onChangeLinkName.bind(this);
+        this.onChangeHomeMounted = this.onChangeHomeMounted.bind(this);
     }
 
     onGreet(){
@@ -22,11 +24,9 @@ class App extends React.Component{
     onChangeLinkName(newName){
         this.setState(
             {
-                homeLink: newName,
-                homeMounted: true
+                homeLink: newName
             }
         );
-
     }
 
     onChangeHomeMounted(){
@@ -35,30 +35,41 @@ class App extends React.Component{
                 homeMounted: !this.state.homeMounted
             }
         );
-
     }
 
     render(){
+        let homeCmp = "";
+
+        if(this.state.homeMounted){
+            homeCmp = 
+                (<Home 
+                    name="Dmitriy" 
+                    initialAge={33} 
+                    greet={this.onGreet}
+                    changeLink={this.onChangeLinkName}
+                    initialLinkName={this.state.homeLink}
+                />);
+        }
+
         return(
-        <div className="container">
-            <div className="row">
-                <div className="cal-xs-10 col-xs-offset-1">
-                    <Header homeLink={this.state.homeLink}/>
+            <div className="container">
+                <div className="row">
+                    <div className="cal-xs-10 col-xs-offset-1">
+                        <Header homeLink={this.state.homeLink}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="cal-xs-10 col-xs-offset-1">
+                        {homeCmp}
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="cal-xs-10 col-xs-offset-1">
+                        <button className="btn btn-primary" onClick={this.onChangeHomeMounted}>(Un)Mount Home Component</button>
+                    </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="cal-xs-10 col-xs-offset-1">
-                    <Home 
-                        name="Dmitriy" 
-                        initialAge={33} 
-                        greet={this.onGreet}
-                        changeLink={this.onChangeLinkName}
-                        initialLinkName={this.state.homeLink}
-                    />
-                </div>
-            </div>
-        </div>
-    );
+        );
     }
 }
 
