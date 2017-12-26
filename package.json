@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && copy src\\index.html dist\\index.html && webpack-dev-server --content-base src\\ --inline --hot --port 9999",
+    "build": "webpack -d && copy src\\index.html dist\\index.html && webpack-dev-server --content-base src\\ --inline --hot --history-api-fallback --port 9999",
     "build:prod": "webpack -p && copy src\\index.html dist\\index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-route": "^1.0.3",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
